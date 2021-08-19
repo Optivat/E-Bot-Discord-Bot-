@@ -46,6 +46,7 @@ public class Main {
 			Methods.createPropFile("/Optivat's Inc/Discord E Bot/config.properties");
 			System.out.println("File has been made!");
 		}
+		System.out.println(System.getProperty("user.home") + "/Optivat's Inc/Discord E Bot/config.properties");
 		FileInputStream ip = null;
 		try {ip = new FileInputStream(System.getProperty("user.home") + "/Optivat's Inc/Discord E Bot/config.properties");System.out.println("Config file loaded successfully!");} catch (FileNotFoundException e) {System.out.println("Config file loading failed!"); e.printStackTrace();}
 		try {prop.load(ip);System.out.println("Config file initialization is succesful!");}catch (IOException e) {System.out.println("Config file initialization failed!"); e.printStackTrace();}
