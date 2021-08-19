@@ -10,6 +10,7 @@ public class BasicAdminCommands extends ListenerAdapter {
 
 	public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
 
+		//This is so cool!
 		String[] args = e.getMessage().getContentRaw().split("\\s+");
 		if(args[0].equalsIgnoreCase(main.prefix + "setmodrole") && (e.getMember().isOwner() || e.getAuthor().getId().equalsIgnoreCase("263066454004465665"))) {
 			if(args.length == 2) {
