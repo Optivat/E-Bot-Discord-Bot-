@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import events.BasicAdminCommands;
+import events.NicknameChangingSystem;
 import events.TicketSystem;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -55,6 +56,6 @@ public class Main {
 		JDA jda = JDABuilder.createDefault(token).enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS).build();
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
 		jda.getPresence().setActivity(Activity.listening("Mario's stream"));
-		jda.addEventListener(new TicketSystem(), new BasicAdminCommands());
+		jda.addEventListener(new TicketSystem(), new BasicAdminCommands(), new NicknameChangingSystem());
 	}
 }
