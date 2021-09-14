@@ -21,18 +21,28 @@ public class TicketSystem extends ListenerAdapter {
 			if(Main.prop.get("modroleid") == null || Main.prop.get("adminroleid") == null) {
 				e.getChannel().sendMessage("Error! Please make sure you set both the Mod Role and the Admin Role using the commands. Do, " + main.prefix + "adminhelp, to get the list of commands to set it up!").queue();
 			} else {
-				EmbedBuilder eb = new EmbedBuilder();
-				eb.setTitle("Tickets", null);
-				eb.setColor(Color.red);
-				eb.setDescription("You need help or want to complain to a superior? This ticket system will allow you to be in a 1 on 1 with a admin to exchange words between each other.");
-				if(Main.prop.getProperty("ticketscategory") == null) {
-					String categoryid = e.getGuild().createCategory("Tickets").complete().getId();
+				if(e.getGuild().getCategoriesByName("Tickets", true).isEmpty()) {
+					EmbedBuilder eb = new EmbedBuilder();
+					eb.setTitle("Tickets", null);
+					eb.setColor(Color.red);
+					eb.setDescription("You need help or want to complain to a superior? This ticket system will allow you to be in a 1 on 1 with a admin to exchange words between each other.");
+					if(Main.prop.getProperty("ticketscategory") == null) {
+						String categoryid = e.getGuild().createCategory("Tickets").complete().getId();
+						Methods.writeProp("ticketscategory", categoryid);
+						String channelid = e.getGuild().getCategoryById(categoryid).createTextChannel("🎫Tickets🎫").addPermissionOverride(e.getGuild().getPublicRole(), null, EnumSet.of(Permission.MESSAGE_WRITE)).complete().getId();
+						String messageid = e.getGuild().getTextChannelById(channelid).sendMessageEmbeds(eb.build()).complete().getId();
+						e.getGuild().getTextChannelById(channelid).addReactionById(messageid, "🎫").queue();
+						Methods.writeProp("ticketmessage", messageid);
+						Methods.writeProp("ticketchannel", channelid);
+					}
+				} else {
+					String categoryid = e.getGuild().getCategoriesByName("Tickets", true).get(0).getId();
 					Methods.writeProp("ticketscategory", categoryid);
-					String channelid = e.getGuild().getCategoryById(categoryid).createTextChannel("🎫Tickets🎫").addPermissionOverride(e.getGuild().getPublicRole(), null, EnumSet.of(Permission.MESSAGE_WRITE)).complete().getId();
-					String messageid = e.getGuild().getTextChannelById(channelid).sendMessageEmbeds(eb.build()).complete().getId();
-					e.getGuild().getTextChannelById(channelid).addReactionById(messageid, "🎫").queue();
-					Methods.writeProp("ticketmessage", messageid);
-					Methods.writeProp("ticketchannel", channelid);
+					if(e.getGuild().getCategoryById(categoryid).getTextChannels().toString().contains("🎫Tickets🎫")) {
+						
+					} else {
+						
+					}
 				}
 				e.getChannel().sendMessage("Done!").queue();	
 			}
