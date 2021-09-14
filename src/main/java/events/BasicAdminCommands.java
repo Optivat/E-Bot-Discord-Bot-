@@ -2,6 +2,7 @@ package events;
 
 import essentials.Main;
 import essentials.Methods;
+import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -35,6 +36,42 @@ public class BasicAdminCommands extends ListenerAdapter {
 				} else {
 					e.getChannel().sendMessage("Invalid arguments! !setadminrole (role id)").queue();
 				}
+				break;
+			case "unmute":
+				if(args.length == 2) {
+					System.out.println(args[1]);
+					if(!(e.getGuild().getMemberById(args[1]).equals(null))) {
+						if(e.getGuild().getMemberById(args[1]).getVoiceState().isGuildMuted()) {
+							e.getGuild().mute(e.getGuild().getMemberById(args[1]), false).queue();
+							e.getChannel().sendMessage("You are now no longer server muted!").queue();
+						} else {
+							e.getChannel().sendMessage("You aren't server muted!").queue();
+						}
+					} else {
+						e.getChannel().sendMessage("Invalid member id! !unmuteme (member id)").queue();
+					}
+				} else {
+					e.getChannel().sendMessage("Invalid arguments! !unmuteme (member id)").queue();
+				}
+				break;
+			case "undeafen":
+				if(args.length == 2) {
+					if(e.getGuild().getMemberById(args[1]) != null) {
+						if(e.getGuild().getMemberById(args[1]).getVoiceState().isGuildDeafened()) {
+							e.getGuild().deafen(e.getGuild().getMemberById(args[1]), false).queue();
+							e.getChannel().sendMessage("You are now no longer server defeaned!").queue();
+						} else {
+							e.getChannel().sendMessage("You aren't server defeaned").queue();
+						}
+					} else {
+						e.getChannel().sendMessage("Invalid member id! !unmuteme (member id)").queue();
+					}
+				} else {
+					e.getChannel().sendMessage("Invalid arguments! !unmuteme (member id)").queue();
+				}
+				break;
+			case "sendmessage":
+				e.getGuild().getTextChannelById("588867997305667595").sendMessage("bro i can literally alt+f4 you don't try me").queue();
 				break;
 			default:
 				return;
