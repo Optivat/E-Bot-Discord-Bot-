@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import events.BasicAdminCommands;
+import events.BasicCommands;
 import events.NicknameChangingSystem;
 import events.TicketSystem;
 import net.dv8tion.jda.api.JDA;
@@ -53,9 +54,9 @@ public class Main {
 		try {prop.load(ip);System.out.println("Config file initialization is succesful!");}catch (IOException e) {System.out.println("Config file initialization failed!"); e.printStackTrace();}
 		
 		String token = "NzMwODMyMTY2Njk4ODc2OTY5.XwdOfg.2R3Zx3UgtdcTqiqjfSBSLHu7_wM";
-		JDA jda = JDABuilder.createDefault(token).enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS).build();
+		JDA jda = JDABuilder.createDefault(token).enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS, GatewayIntent.GUILD_PRESENCES).build();
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
 		jda.getPresence().setActivity(Activity.listening("Mario's stream"));
-		jda.addEventListener(new TicketSystem(), new BasicAdminCommands(), new NicknameChangingSystem());
+		jda.addEventListener(new TicketSystem(), new BasicAdminCommands(), new NicknameChangingSystem(), new BasicCommands());
 	}
 }
