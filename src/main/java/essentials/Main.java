@@ -54,7 +54,10 @@ public class Main {
 		try {ip = new FileInputStream(System.getProperty("user.home") + "/Optivat's Inc/Discord E Bot/config.properties");System.out.println("Config file loaded successfully!");} catch (FileNotFoundException e) {System.out.println("Config file loading failed!"); e.printStackTrace();}
 		try {prop.load(ip);System.out.println("Config file initialization is succesful!");}catch (IOException e) {System.out.println("Config file initialization failed!"); e.printStackTrace();}
 		
-		String token = "NzMwODMyMTY2Njk4ODc2OTY5.XwdOfg.2R3Zx3UgtdcTqiqjfSBSLHu7_wM";
+		//E Bot
+		//String token = "NzMwODMyMTY2Njk4ODc2OTY5.XwdOfg.2R3Zx3UgtdcTqiqjfSBSLHu7_wM";
+		//Beta E Bot
+		String token = "ODIyMTcyNzE0MzcwMzM0NzIw.YFOaAg.uU5QG3hC-bGFVnFda7K7jyGN5W4";
 		JDA jda = JDABuilder.createDefault(token).enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS).build();
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
 		jda.getPresence().setActivity(Activity.listening("Mario's stream"));
