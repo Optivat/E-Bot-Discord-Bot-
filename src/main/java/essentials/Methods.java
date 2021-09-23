@@ -42,4 +42,13 @@ public class Methods {
 				return false;
 			}
 	}
+	public static boolean testIfLettersInString(String string) {
+		int len = string.length();
+		 for (int i = 0; i < len; i++) {
+	         if (Character.isLetter(string.charAt(i)) == false) {
+	            return false;
+	         }
+	      }
+		 return true;
+	}
 }

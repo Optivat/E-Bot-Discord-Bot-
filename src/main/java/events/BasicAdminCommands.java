@@ -2,9 +2,10 @@ package events;
 
 import essentials.Main;
 import essentials.Methods;
-import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.components.Button;
 
 public class BasicAdminCommands extends ListenerAdapter {
 	Main main = new Main();
@@ -71,7 +72,19 @@ public class BasicAdminCommands extends ListenerAdapter {
 				}
 				break;
 			case "sendmessage":
-				e.getGuild().getTextChannelById("588867997305667595").sendMessage("bro i can literally alt+f4 you don't try me").queue();
+				if (args.length==3) {
+					if(Methods.testIfLettersInString(args[1]) == false && e.getGuild().getTextChannelById(Long.parseLong(args[1])) != null) {
+						TextChannel channel = e.getGuild().getTextChannelById(args[1]);
+						String message = e.getMessage().getContentRaw().replace(args[0], " ").replace(args[1], " ").strip();
+						System.out.println(message);
+						channel.sendMessage(message).queue();
+					} else {
+						e.getChannel().sendMessage("The channel id is invalid.").queue();
+					}
+				}
+				break;
+			case "button":
+				e.getChannel().sendMessage("Button noises must intensify!").setActionRow(Button.primary("hello", "Click Me")).queue();
 				break;
 			default:
 				return;

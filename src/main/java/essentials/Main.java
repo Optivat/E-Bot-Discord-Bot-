@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import events.BasicAdminCommands;
+import events.BasicCommands;
 import events.MemeSubmissionsSystem;
 import events.NicknameChangingSystem;
 import events.TicketSystem;
@@ -57,6 +58,6 @@ public class Main {
 		JDA jda = JDABuilder.createDefault(token).enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS).build();
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
 		jda.getPresence().setActivity(Activity.listening("Mario's stream"));
-		jda.addEventListener(new TicketSystem(), new BasicAdminCommands(), new NicknameChangingSystem(), new MemeSubmissionsSystem());
+		jda.addEventListener(new TicketSystem(), new BasicAdminCommands(), new NicknameChangingSystem(), new MemeSubmissionsSystem(), new BasicCommands());
 	}
 }
