@@ -1,1 +1,1 @@
-Worker: java -cp classes src/main/java/Main.java
+Worker: java -cp classes src/main/java/essentials/Main.java
