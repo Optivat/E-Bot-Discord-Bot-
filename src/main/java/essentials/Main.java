@@ -13,11 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import events.BasicAdminCommands;
-import events.BasicCommands;
-import events.MemeSubmissionsSystem;
-import events.NicknameChangingSystem;
-import events.TicketSystem;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
