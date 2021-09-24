@@ -1,1 +1,1 @@
-Worker: java -cp classes src/main/java/essentials/Main.java
+Worker: java $JAVA_OPTS -cp target/classes:target/dependency/* Main
