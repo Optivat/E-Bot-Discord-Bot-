@@ -45,7 +45,7 @@ public class BasicAdminCommands extends ListenerAdapter {
 							e.getGuild().mute(e.getGuild().getMemberById(args[1]), false).queue();
 							e.getChannel().sendMessage("You are now no longer server muted!").queue();
 						} else {
-							e.getChannel().sendMessage("You aren't server muted!").queue();s
+							e.getChannel().sendMessage("You aren't server muted!").queue();
 						}
 					} else {
 						e.getChannel().sendMessage("Invalid member id! !unmuteme (member id)").queue();
