@@ -1,4 +1,7 @@
-package essentials;
+package events;
+
+import essentials.Methods;
+
 import java.awt.Color;
 import java.util.EnumSet;
 

@@ -1,2 +1,2 @@
-language = "bash"
-run = ""
+language = "java10"
+run = "java src/main/java/essentials/Main.java"

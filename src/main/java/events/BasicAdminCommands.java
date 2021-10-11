@@ -1,4 +1,6 @@
-package essentials;
+package events;
+
+import essentials.Methods;
 
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;

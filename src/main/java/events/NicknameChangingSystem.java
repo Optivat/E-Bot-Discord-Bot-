@@ -1,4 +1,6 @@
-package essentials;
+package events;
+
+import essentials.Methods;
 
 import java.awt.Color;
 
