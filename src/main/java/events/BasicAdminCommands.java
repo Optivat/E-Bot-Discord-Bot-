@@ -1,5 +1,6 @@
 package events;
 
+import essentials.Main;
 import essentials.Methods;
 
 import net.dv8tion.jda.api.entities.TextChannel;
