@@ -14,7 +14,7 @@ public class NicknameChangingSystem extends ListenerAdapter {
 	
 	Main main = new Main();
 
-	String[] profanitylist = {"fuck","bitch","shit","sex","nigga","ass","slut","nigger"};
+	String[] profanitylist = {"butt"};
 	
 	public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
 	String[] args = e.getMessage().getContentRaw().split("\\s+");
